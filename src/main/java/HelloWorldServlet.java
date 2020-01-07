@@ -21,10 +21,20 @@ public class HelloWorldServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        hitCount ++;
-        PrintWriter out = response.getWriter();
-        out.println("<h1>Hello, World!</h1> <p>Page view counter: " + hitCount + "</p>");
+        String name = request.getParameter("name");
+
+        if (name == null || name.equalsIgnoreCase("")) {
+            response.setContentType("text/html");
+            hitCount ++;
+            PrintWriter out = response.getWriter();
+            out.println("<h1>Hello, World!</h1> <p>Page view counter: " + hitCount + "</p>");
+        } else {
+            response.setContentType("text/html");
+            hitCount ++;
+            PrintWriter out = response.getWriter();
+            out.println("<h1>Hello " + name +"</h1> <p>Page view counter: " + hitCount + "</p>");
+        }
+
     }
 
 }
