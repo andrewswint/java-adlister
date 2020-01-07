@@ -28,6 +28,11 @@ public class HelloWorldServlet extends HttpServlet {
             hitCount ++;
             PrintWriter out = response.getWriter();
             out.println("<h1>Hello, World!</h1> <p>Page view counter: " + hitCount + "</p>");
+        } else if (name.equalsIgnoreCase("reset")){
+            response.setContentType("text/html");
+            hitCount = 0;
+            PrintWriter out = response.getWriter();
+            out.println("<h1>Hello, World!</h1> <p>Page view counter: " + hitCount + "</p>");
         } else {
             response.setContentType("text/html");
             hitCount ++;
