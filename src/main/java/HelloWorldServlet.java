@@ -22,15 +22,15 @@ public class HelloWorldServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
+        String reset = request.getParameter("reset");
+
+        if (reset != null && reset.equalsIgnoreCase("true")) {
+            init();
+        }
 
         if (name == null || name.equalsIgnoreCase("")) {
             response.setContentType("text/html");
             hitCount ++;
-            PrintWriter out = response.getWriter();
-            out.println("<h1>Hello, World!</h1> <p>Page view counter: " + hitCount + "</p>");
-        } else if (name.equalsIgnoreCase("reset")){
-            response.setContentType("text/html");
-            hitCount = 0;
             PrintWriter out = response.getWriter();
             out.println("<h1>Hello, World!</h1> <p>Page view counter: " + hitCount + "</p>");
         } else {
