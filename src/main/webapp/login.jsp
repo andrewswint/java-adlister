@@ -14,13 +14,15 @@
 </head>
 <body>
 <jsp:include page="partials/navbar.jsp" />
+<jsp:include page="partials/headCard.jsp" />
+
 
     <form method="post" action="">
         <label for="username">Username</label>
         <input type="text" id="username" name="username">
         <label for="password">Password</label>
         <input type="password" id="password" name="password">
-        <input type="submit" value="Submit">
+        <button type="submit" value="Submit">Submit</button>
     </form>
 
     <c:if test="${param.username.equalsIgnoreCase('admin') && param.password.equals('password')}" >
