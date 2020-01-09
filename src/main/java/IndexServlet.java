@@ -10,11 +10,8 @@ import java.util.List;
 @WebServlet(urlPatterns = "/ads")
 public class IndexServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
-        // Use the factory to get the dao object
         Ads listAdsDao = DaoFactory.getAdsDao();
-        // Use a method on the dao to get all the products
         List<Ad> ads = listAdsDao.all();
-        // Pass the data to the jsp
         request.setAttribute("ads", ads);
         request.getRequestDispatcher("/ads/index.jsp").forward(request, resp);
     }
