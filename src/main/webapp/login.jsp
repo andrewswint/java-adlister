@@ -14,16 +14,27 @@
 </head>
 <body>
 <jsp:include page="partials/navbar.jsp" />
-<jsp:include page="partials/headCard.jsp" />
 
-
-    <form method="post" action="">
+<form>
+    <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" id="username" name="username">
+        <input type="text" class="form-control" id="username" aria-describedby="emailHelp" name="username">
+    </div>
+    <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password">
-        <button type="submit" value="Submit">Submit</button>
-    </form>
+        <input type="password" class="form-control" id="password" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+<%--    <form method="post" action="">--%>
+<%--        <label for="username">Username</label>--%>
+<%--        <input type="text" id="username" name="username">--%>
+<%--        <label for="password">Password</label>--%>
+<%--        <input type="password" id="password" name="password">--%>
+<%--        <button type="submit" value="Submit">Submit</button>--%>
+<%--    </form>--%>
 
     <c:if test="${param.username.equalsIgnoreCase('admin') && param.password.equals('password')}" >
         <c:redirect url="profile.jsp">
