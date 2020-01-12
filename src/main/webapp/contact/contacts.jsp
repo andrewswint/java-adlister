@@ -16,6 +16,14 @@
     <div class="contact">
         <h2>${contact.firstName}${contact.lastName}</h2>
         <p>${contact.phoneNumber}</p>
+        <form method="POST" action="/contacts/delete">
+        <input type="hidden" name="idValue" value="${contact.id}">
+            <button>Delete</button>
+        </form>
+        <form method="POST" action="/contacts/edit">
+            <input type="hidden" name="idValue" value="${contact.id}">
+            <button>Edit</button>
+        </form>
     </div>
 </c:forEach>
 <form method="POST" action="/contacts">

@@ -10,8 +10,8 @@ import java.util.List;
 @WebServlet(urlPatterns = "/contacts")
 public class ContactServlet extends HttpServlet {
     Contacts ContactListDao = DaoFactory.getContactsDao();
-    List<Contact> contacts = ContactListDao.getContacts();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Contact> contacts = ContactListDao.getContacts();
         request.setAttribute("contacts", contacts);
         request.getRequestDispatcher("/contact/contacts.jsp").forward(request, response);
     }
@@ -22,7 +22,5 @@ public class ContactServlet extends HttpServlet {
         String phoneNumber = request.getParameter("phoneNumber");
         Contact newContact = new Contact(firstName,lastName,phoneNumber);
         ContactListDao.saveContact(newContact);
-        request.setAttribute("contacts", contacts);
-        request.getRequestDispatcher("/contact/contacts.jsp").forward(request, response);
     }
 }
