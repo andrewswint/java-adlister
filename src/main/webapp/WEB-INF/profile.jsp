@@ -11,10 +11,7 @@
     <div class="container">
         <h1>Welcome ${sessionScope.username}</h1>
     </div>
-    <form method="POST" action="/logout">
-    <input type="hidden" value="logout" id="logout" name="logout">
-    <input type="submit" class="btn btn-primary btn-block" value="Logout" name="logout">
-    </form>
+
 
 </body>
 </html>
