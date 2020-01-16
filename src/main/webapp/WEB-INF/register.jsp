@@ -5,6 +5,7 @@
   Time: 4:13 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -29,6 +30,16 @@
 
     <button type="submit">Submit</button>
 </form>
+
+<c:if test="${param.error != null}">
+    <c:choose>
+        <c:when test="${param.error.equalsIgnoreCase('null')}">
+            <p>
+                All inputs must be submitted...
+            </p>
+        </c:when>
+    </c:choose>
+</c:if>
 
 </body>
 </html>

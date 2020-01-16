@@ -4,6 +4,8 @@ import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MySQLUsersDao implements Users {
     public MySQLUsersDao(Config config) {
@@ -22,15 +24,18 @@ public class MySQLUsersDao implements Users {
     @Override
     public User findByUsername(String username) {
         try {
-            String sql = "SELECT * FROM users WHERE username LIKE ?";
+            String sql = "SELECT * FROM users WHERE username = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
-            rs.next();
+            if (rs.next()) {
                 User result = new User(rs.getLong("id"), rs.getString("username"), rs.getString("email"), rs.getString("password"));
             return result;
+            } else {
+                return null;
+            }
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving all ads.", e);
+            throw new RuntimeException("Error retrieving all users.", e);
         }
     }
 

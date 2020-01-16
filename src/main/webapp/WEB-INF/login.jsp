@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,6 +8,9 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+    <c:if test="${param.error != null}">
+        <p>Username or password is incorrect. Please try again</p>
+    </c:if>
     <div class="container">
         <h1>Please Log In</h1>
         <form action="/login" method="POST">
